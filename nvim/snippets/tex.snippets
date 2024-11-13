@@ -11,7 +11,7 @@ snippet gloss "Glossary Entry"  b
 
 
 
-# beamer frame enviornment
+# beamer frame environment
 snippet frame "Beamer Frame" b
 	\begin{frame}
 
@@ -28,7 +28,7 @@ snippet frame "Beamer Frame" b
 
 
 
-# beamer item enviornment
+# beamer item environment
 snippet bemit "Beamer Item" b
 	\textbf{${1:label}} ${2:claim}
 	\vspace{.2in}
@@ -36,7 +36,7 @@ snippet bemit "Beamer Item" b
 #
 
 
-# Ttheorem enviornment
+# Ttheorem environment
 snippet Tthm "Ttheorem" b
 	\vspace{.05in}
 	\begin{Tthm} \label{${1:label}}
@@ -49,7 +49,7 @@ snippet Tthm "Ttheorem" b
 #
 
 
-# Mtheorem enviornment
+# Mtheorem environment
 snippet Mthm "Mtheorem" b
 	\vspace{.05in}
 	\begin{Mthm} \label{${1:label}}
@@ -62,7 +62,7 @@ snippet Mthm "Mtheorem" b
 #
 
 
-# Ctheorem enviornment
+# Ctheorem environment
 snippet Cthm "Ctheorem" b
 	\vspace{.05in}
 	\begin{Cthm} \label{${1:label}}
@@ -75,7 +75,7 @@ snippet Cthm "Ctheorem" b
 #
 
 
-# Rtheorem enviornment
+# Rtheorem environment
 snippet Rthm "Rtheorem" b
 	\vspace{.05in}
 	\begin{Rthm} \label{${1:label}}
@@ -88,7 +88,7 @@ snippet Rthm "Rtheorem" b
 #
 
 
-# Ltheorem enviornment
+# Ltheorem environment
 snippet Lthm "Ltheorem" b
 	\vspace{.05in}
 	\begin{Lthm} \label{${1:label}}
@@ -101,7 +101,7 @@ snippet Lthm "Ltheorem" b
 #
 
 
-# Ptheorem enviornment
+# Ptheorem environment
 snippet Pthm "Ptheorem" b
 	\vspace{.05in}
 	\begin{Pthm} \label{${1:label}}
@@ -114,7 +114,7 @@ snippet Pthm "Ptheorem" b
 #
 
 
-# Dtheorem enviornment
+# Dtheorem environment
 snippet Dthm "Dtheorem" b
 	\vspace{.05in}
 	\begin{Dthm} \label{${1:label}}
@@ -127,7 +127,7 @@ snippet Dthm "Dtheorem" b
 #
 
 
-# custom theorem enviornment
+# custom theorem environment
 snippet customthm "Custom Theorem" b
 	\vspace{.1in}
 	\begin{customthm}{(${1:label})}
@@ -140,7 +140,7 @@ snippet customthm "Custom Theorem" b
 #
 
 
-# factoidbox enviornment
+# factoidbox environment
 snippet factoidbox "Factoid Box" b
 	\label{rule:${2:$1}}
 	\factoidbox{
@@ -148,7 +148,7 @@ snippet factoidbox "Factoid Box" b
 	}
 #
 
-# framed text enviornment
+# framed text environment
 snippet textbox "Text Box" b
 	\begin{tcolorbox}
 		${0}
@@ -237,25 +237,52 @@ snippet case "Cases"
 	\end{cases}${0}
 #
 
+# Chapter
+snippet \cha "Chapter" b
+  \chapter{${1:chapter name}} % (fold)
+  \label{cha:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3)/g}}}
+    ${0:$TM_SELECTED_TEXT}
+  % chapter $2 (end)
+#
+
 # Section
-snippet sec "Section" b
-	\section{${1:Name}}%
-		\label{sec:${2:$1}}
-		${0}
+snippet \sec "Section" b
+  \section{${1:section name}} % (fold)
+  \label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3)/g}}}
+    ${0:$TM_SELECTED_TEXT}
+  % section $2 (end)
+#
+
+# Test
+snippet \test "Test" b
+  \test{${1:test name}} % (fold)
+  \label{tst:${2:${1/\ /_/g}}}
+    ${0:$TM_SELECTED_TEXT}
+  % section $2 (end)
 #
 
 # Sub Section
-snippet sub "Sub Section" b
-	\subsection{${1:Name}}%
-		\label{sub:${2:$1}}
-		${0}
+snippet \sub "Sub Section" b
+  \subsection{${1:subsection name}} % (fold)
+  \label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3)/g}}}
+    ${0:$TM_SELECTED_TEXT}
+  % subsection $2 (end)
 #
 
 # Sub Sub Section
-snippet ssub "Sub Sub Section" b
-	\subsubsection{${1:Name}}%
-		\label{sub:${2:$1}}
-		${0}
+snippet \ssub "Sub Sub Section" b
+  \subsubsection{${1:subsubsection name}} % (fold)
+  \label{ssec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3)/g}}}
+    ${0:$TM_SELECTED_TEXT}
+  % subsubsection $2 (end)
+#
+
+# Paragraph
+snippet \par "Paragraph" b
+  \paragraph{${1:paragraph name}} % (fold)
+  \label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3)/g}}}
+    ${0:$TM_SELECTED_TEXT}
+  % paragraph $2 (end)
 #
 
 # Hyper Section
@@ -310,8 +337,9 @@ snippet mf "Mathfrak" w
 #
 
 snippet mc "Mathcal" w
-	\mathcal{${1}}${0}
+  \mathcal{${1}}${0}
 #
+
 
 snippet ms "Mathscr" w
 	\mathscr{${1}}${0}
@@ -409,13 +437,27 @@ snippet corl "Corollary" bi
 	\begin{corollary}[$1]
 		${0:${VISUAL}}
 	\end{corollary}
+#
+
 
 snippet example "Example" bi
 	\begin{example}[$1]
 		${0:${VISUAL}}
 	\end{example}
+#
 
+snippet eq "Equation environment" b
+  \begin{equation}
+    ${0}
+  \end{equation}
+#
 
+# Exponential
+snippet \exp "Exponential" w
+  \mathrm{e}^{$0}
+#
 
-
-
+# Emphasize
+snippet \emph "Emphasize" wi
+  \emph{${1:${VISUAL}}}$0
+#

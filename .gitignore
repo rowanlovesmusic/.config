@@ -55,3 +55,9 @@ Smart Code ltd/Stremio.conf
 Vial/Vial.conf
 qmk/qmk.ini
 via-nativia
+fontforge/plugin/plugin_config.ini
+neofetch/config.conf
+nvim/luasnip/all.lua
+fish/functions/lc.fish
+fish/functions/skim.fish
+fish/functions/vim.fish
